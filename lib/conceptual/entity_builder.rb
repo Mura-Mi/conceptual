@@ -9,5 +9,9 @@ module Conceptual
     def int(name)
       @attributes << name
     end
+
+    def string(name)
+      @attributes << name
+    end
   end
 end

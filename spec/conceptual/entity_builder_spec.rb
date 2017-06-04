@@ -31,4 +31,25 @@ RSpec.describe Conceptual::EntityBuilder do
     end
   end
 
+  context "after method `string` called" do
+    subject(:entity_builder) {
+      eb = Conceptual::EntityBuilder.new
+      eb.string(:name)
+      eb
+    }
+
+    describe("attributes") do
+      subject { entity_builder.attributes }
+
+      it "has 1 element" do
+        expect(subject.size).to eq 1
+      end
+
+      it "contains :age" do
+        expect(subject).to include(:name)
+      end
+
+    end
+  end
+
 end
