@@ -23,7 +23,7 @@ RSpec.describe Conceptual::EntityBuilder do
       end
 
       it "contains :age" do
-        expect(subject).to include(:age)
+        expect(subject).to include(Conceptual::IntAttribute.new(:age))
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe Conceptual::EntityBuilder do
       end
 
       it "contains :age" do
-        expect(subject).to include(:name)
+        expect(subject).to include(Conceptual::StringAttribute.new(:name))
       end
     end
 
@@ -47,19 +47,19 @@ RSpec.describe Conceptual::EntityBuilder do
       end
 
       it "contains :age" do
-        expect(subject).to include(:birthday)
+        expect(subject).to include(Conceptual::DateAttribute.new(:birthday))
       end
     end
 
     context "after method `datetime` called" do
-      let!(:action) { entity_builder.date(:created_at) }
+      let!(:action) { entity_builder.datetime(:created_at) }
 
       it "has 1 element" do
         expect(subject.size).to eq 1
       end
 
       it "contains :age" do
-        expect(subject).to include(:created_at)
+        expect(subject).to include(Conceptual::DateTimeAttribute.new(:created_at))
       end
     end
   end

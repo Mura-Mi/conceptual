@@ -1,3 +1,5 @@
+require 'conceptual/attributes'
+
 module Conceptual
   class EntityBuilder
     attr_reader :attributes
@@ -7,19 +9,19 @@ module Conceptual
     end
 
     def int(name)
-      @attributes << name
+      @attributes << Conceptual::IntAttribute.new(name)
     end
 
     def string(name)
-      @attributes << name
+      @attributes << Conceptual::StringAttribute.new(name)
     end
 
     def date(name)
-      @attributes << name
+      @attributes << Conceptual::DateAttribute.new(name)
     end
 
     def datetime(name)
-      @attributes << name
+      @attributes << Conceptual::DateTimeAttribute.new(name)
     end
   end
 end
