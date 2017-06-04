@@ -2,23 +2,21 @@ require "spec_helper"
 require "conceptual/entity_builder"
 
 RSpec.describe Conceptual::EntityBuilder do
-  context "when it is initialized" do
-    subject { Conceptual::EntityBuilder.new }
+  subject(:entity_builder) { Conceptual::EntityBuilder.new }
 
-    it "has empty attributes array" do
-      expect(subject.attributes).to be_empty
+  describe("attributes") do
+    subject { entity_builder.attributes }
+
+    context "when it is initialized" do
+      let!(:action) {}
+
+      it "has empty attributes array" do
+        expect(entity_builder.attributes).to be_empty
+      end
     end
-  end
 
-  context "after method `int` called" do
-    subject(:entity_builder) {
-      eb = Conceptual::EntityBuilder.new
-      eb.int(:age)
-      eb
-    }
-
-    describe("attributes") do
-      subject { entity_builder.attributes }
+    context "after method `int` called" do
+      let!(:action) { entity_builder.int(:age) }
 
       it "has 1 element" do
         expect(subject.size).to eq 1
@@ -29,17 +27,9 @@ RSpec.describe Conceptual::EntityBuilder do
       end
 
     end
-  end
 
-  context "after method `string` called" do
-    subject(:entity_builder) {
-      eb = Conceptual::EntityBuilder.new
-      eb.string(:name)
-      eb
-    }
-
-    describe("attributes") do
-      subject { entity_builder.attributes }
+    context "after method `string` called" do
+      let!(:action) { entity_builder.string(:name) }
 
       it "has 1 element" do
         expect(subject.size).to eq 1
