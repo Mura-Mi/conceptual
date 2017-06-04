@@ -13,5 +13,13 @@ module Conceptual
     def string(name)
       @attributes << name
     end
+
+    def date(name)
+      @attributes << name
+    end
+
+    def datetime(name)
+      @attributes << name
+    end
   end
 end
