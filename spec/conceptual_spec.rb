@@ -1,11 +1,8 @@
 require "spec_helper"
+require "conceptual"
 
 RSpec.describe Conceptual do
   it "has a version number" do
-    expect(Conceptual::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(false).to eq(true)
+    expect(Conceptual::VERSION).to eq('0.0.1')
   end
 end
