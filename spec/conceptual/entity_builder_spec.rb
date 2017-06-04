@@ -4,6 +4,15 @@ require "conceptual/entity_builder"
 RSpec.describe Conceptual::EntityBuilder do
   subject(:entity_builder) { Conceptual::EntityBuilder.new }
 
+  describe("name") do
+    class Player < Conceptual::EntityBuilder
+    end
+
+    subject { Player.instance.name }
+
+    it { is_expected.to eq("Player") }
+  end
+
   describe("attributes") do
     subject { entity_builder.attributes }
 

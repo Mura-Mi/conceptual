@@ -23,6 +23,10 @@ module Conceptual
       attributes << Conceptual::DateTimeAttribute.new(name)
     end
 
+    def name
+      self.class.name
+    end
+
     def attributes
       @attributes ||= []
     end
