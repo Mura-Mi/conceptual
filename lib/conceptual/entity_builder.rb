@@ -7,6 +7,10 @@ module Conceptual
     def initialize()
     end
 
+    def self.method_missing(name, *args)
+      self.instance.send name, *args
+    end
+
     def int(name)
       attributes << Conceptual::IntAttribute.new(name)
     end

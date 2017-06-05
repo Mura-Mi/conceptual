@@ -11,12 +11,11 @@ RSpec.describe Conceptual do
 
     class Player < Conceptual::EntityBuilder
       include Singleton
-      def initialize
-        int(:age)
-        string(:name)
-        date(:birthday)
-        datetime(:created_at)
-      end
+
+      int(:age)
+      string(:name)
+      date(:birthday)
+      datetime(:created_at)
     end
 
     subject(:player) { Player.instance }
