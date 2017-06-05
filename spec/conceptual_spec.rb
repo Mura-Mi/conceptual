@@ -1,8 +1,6 @@
 require "spec_helper"
 require "conceptual"
 require 'singleton'
-require "conceptual/entity_builder"
-require "conceptual/attributes"
 
 RSpec.describe Conceptual do
   it "has a version number" do
