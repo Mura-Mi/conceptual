@@ -1,6 +1,9 @@
 require 'conceptual/attributes'
 
 module Conceptual
+  class EntityBuilderIsNotSingletonError < Exception
+  end
+
   class EntityBuilder
     attr_reader :attributes
 
@@ -8,7 +11,11 @@ module Conceptual
     end
 
     def self.method_missing(name, *args)
-      self.instance.send name, *args
+      if self.respond_to?(:instance)
+        self.instance.send name, *args
+      else
+        raise EntityBuilderIsNotSingletonError
+      end
     end
 
     def int(name)

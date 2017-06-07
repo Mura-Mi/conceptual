@@ -7,6 +7,19 @@ RSpec.describe Conceptual do
     expect(Conceptual::VERSION).to eq('0.0.1')
   end
 
+  describe 'EntityBuilder without Singleton module' do
+    it 'throws error message' do
+      expect {
+        class InvalidPlayer < Conceptual::EntityBuilder
+          int(:age)
+          string(:name)
+          date(:birthday)
+          datetime(:created_at)
+        end
+      }.to raise_error(Conceptual::EntityBuilderIsNotSingletonError)
+    end
+  end
+
   describe "usage" do
 
     class Player < Conceptual::EntityBuilder
