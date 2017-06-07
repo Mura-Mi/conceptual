@@ -24,4 +24,20 @@ module Conceptual
 
   class DateTimeAttribute < Attribute
   end
+
+  class BelongsToAttribute < Attribute
+    def initialize(entity)
+      if entity.is_a?(Class) && entity.superclass == Conceptual::EntityBuilder
+        @reference = entity
+      else
+        raise InvalidBelongsToError
+      end
+    end
+  end
+
+  class InvalidBelongsToError < Exception
+    def message
+      'BelongsToAttributes should be initialized with EntityBuilder class object'
+    end
+  end
 end
