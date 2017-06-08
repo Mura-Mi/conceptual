@@ -20,13 +20,34 @@ RSpec.describe Conceptual do
     end
   end
 
+  describe 'belongsTo with class which is not EntityBuilder' do
+    it 'throws error message' do
+      expect {
+        class InvalidPlayer < Conceptual::EntityBuilder
+          include Singleton
+          int(:age)
+          string(:name)
+          belongs_to(String)
+        end
+      }.to raise_error(Conceptual::InvalidBelongsToError)
+    end
+  end
+
   describe "usage" do
+
+    class Team < Conceptual::EntityBuilder
+      include Singleton
+
+      string(:name)
+      int(:since_year)
+    end
 
     class Player < Conceptual::EntityBuilder
       include Singleton
 
       int(:age)
       string(:name)
+      belongs_to(Team)
       date(:birthday)
       datetime(:created_at)
     end
@@ -37,7 +58,7 @@ RSpec.describe Conceptual do
       subject { player.attributes }
 
       it "returns all attributes via `attributes`" do
-        expect(subject.size).to eq(4)
+        expect(subject.size).to eq(5)
       end
 
       it "contains `age` int field as first element" do
@@ -48,12 +69,16 @@ RSpec.describe Conceptual do
         expect(subject[1]).to eq(Conceptual::StringAttribute.new(:name))
       end
 
-      it "contains `birthday` date field as second element" do
-        expect(subject[2]).to eq(Conceptual::DateAttribute.new(:birthday))
+      it "contains `team` belongs_to field as third element" do
+        expect(subject[2]).to eq(Conceptual::BelongsToAttribute.new(Team))
       end
 
-      it "contains `created_at` datetime field as second element" do
-        expect(subject[3]).to eq(Conceptual::DateTimeAttribute.new(:created_at))
+      it "contains `birthday` date field as fourth element" do
+        expect(subject[3]).to eq(Conceptual::DateAttribute.new(:birthday))
+      end
+
+      it "contains `created_at` datetime field as fifth element" do
+        expect(subject[4]).to eq(Conceptual::DateTimeAttribute.new(:created_at))
       end
 
     end

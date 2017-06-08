@@ -34,6 +34,10 @@ module Conceptual
       attributes << Conceptual::DateTimeAttribute.new(name)
     end
 
+    def belongs_to(entity)
+      attributes << Conceptual::BelongsToAttribute.new(entity)
+    end
+
     def name
       self.class.name
     end
