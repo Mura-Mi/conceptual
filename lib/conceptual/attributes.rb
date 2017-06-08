@@ -29,7 +29,7 @@ module Conceptual
     def initialize(entity)
       if entity.is_a?(Class) && entity.superclass == Conceptual::EntityBuilder
         @reference = entity
-        @name = entity.name
+        @name = entity.name.to_snake
       else
         raise InvalidBelongsToError
       end

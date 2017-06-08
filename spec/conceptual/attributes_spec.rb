@@ -77,7 +77,7 @@ RSpec.describe Conceptual::Attribute do
     end
 
     it('builds default attribute name from given associated entity') {
-      expect(subject.name).to eq 'Player'
+      expect(subject.name).to eq 'player'
     }
   end
 
