@@ -1,8 +1,10 @@
 require "bundler/setup"
 require "conceptual"
 require 'coveralls'
+require 'simplecov'
 
 Coveralls.wear!
+SimpleCov.start
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
