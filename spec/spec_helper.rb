@@ -1,5 +1,3 @@
-require "bundler/setup"
-require "conceptual"
 require 'coveralls'
 require 'simplecov'
 
