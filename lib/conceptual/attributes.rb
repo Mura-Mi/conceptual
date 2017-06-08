@@ -26,6 +26,7 @@ module Conceptual
   end
 
   class BelongsToAttribute < Attribute
+    attr_accessor :reference
     def initialize(entity)
       if entity.is_a?(Class) && entity.superclass == Conceptual::EntityBuilder
         @reference = entity
@@ -33,6 +34,11 @@ module Conceptual
       else
         raise InvalidBelongsToError
       end
+    end
+
+    def as(name)
+      @name = name
+      self
     end
   end
 

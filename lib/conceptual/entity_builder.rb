@@ -19,23 +19,23 @@ module Conceptual
     end
 
     def int(name)
-      attributes << Conceptual::IntAttribute.new(name)
+      append Conceptual::IntAttribute.new(name)
     end
 
     def string(name)
-      attributes << Conceptual::StringAttribute.new(name)
+      append Conceptual::StringAttribute.new(name)
     end
 
     def date(name)
-      attributes << Conceptual::DateAttribute.new(name)
+      append Conceptual::DateAttribute.new(name)
     end
 
     def datetime(name)
-      attributes << Conceptual::DateTimeAttribute.new(name)
+      append Conceptual::DateTimeAttribute.new(name)
     end
 
     def belongs_to(entity)
-      attributes << Conceptual::BelongsToAttribute.new(entity)
+      append Conceptual::BelongsToAttribute.new(entity)
     end
 
     def name
@@ -45,5 +45,12 @@ module Conceptual
     def attributes
       @attributes ||= []
     end
+
+    private
+    def append(attr)
+      attributes << attr
+      attr
+    end
+
   end
 end
