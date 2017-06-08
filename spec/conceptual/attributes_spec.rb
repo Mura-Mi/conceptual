@@ -20,7 +20,7 @@ RSpec.describe Conceptual::Attribute do
       subject { attr.name }
 
       it "is as initializer receives" do
-        expect(subject).to eq(:name) 
+        expect(subject).to eq(:name)
       end
     end
   end
@@ -70,9 +70,15 @@ RSpec.describe Conceptual::Attribute do
       expect { Conceptual::BelongsToAttribute.new(String) }.to raise_error Conceptual::InvalidBelongsToError
     end
 
+    subject { Conceptual::BelongsToAttribute.new(Player) }
+
     it("can be initialized with EntityBuilder") do
-      expect { Conceptual::BelongsToAttribute.new(Player) }.to_not raise_error
+      expect { subject }.to_not raise_error
     end
+
+    it('builds default attribute name from given associated entity') {
+      expect(subject.name).to eq 'Player'
+    }
   end
 
 end
