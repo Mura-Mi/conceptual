@@ -79,6 +79,18 @@ RSpec.describe Conceptual::Attribute do
     it('builds default attribute name from given associated entity') {
       expect(subject.name).to eq 'player'
     }
+
+    describe('as') do
+      subject(:set_as) { Conceptual::BelongsToAttribute.new(Player).as(:favorite) }
+
+      it('returns self') do
+        expect(set_as).to be_a Conceptual::BelongsToAttribute
+      end
+
+      it('can set custom name via `as`') do
+        expect(set_as.name).to eq :favorite
+      end
+    end
   end
 
 end

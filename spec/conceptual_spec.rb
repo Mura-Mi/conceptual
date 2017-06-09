@@ -42,12 +42,17 @@ RSpec.describe Conceptual do
       int(:since_year)
     end
 
+    class HighSchool < Conceptual::EntityBuilder
+      include Singleton
+    end
+
     class Player < Conceptual::EntityBuilder
       include Singleton
 
       int(:age)
       string(:name)
       belongs_to(Team)
+      belongs_to(HighSchool).as(:graduated_high_school)
       date(:birthday)
       datetime(:created_at)
     end
@@ -58,7 +63,7 @@ RSpec.describe Conceptual do
       subject { player.attributes }
 
       it "returns all attributes via `attributes`" do
-        expect(subject.size).to eq(5)
+        expect(subject.size).to eq(6)
       end
 
       it "contains `age` int field as first element" do
@@ -73,12 +78,22 @@ RSpec.describe Conceptual do
         expect(subject[2]).to eq(Conceptual::BelongsToAttribute.new(Team))
       end
 
+      it "contains `graduated_high_school`" do
+        expect(subject[3]).to be_a Conceptual::BelongsToAttribute
+      end
+      it "graduated_high_school is HighSchool" do
+        expect(subject[3].reference).to eq HighSchool
+      end
+      it "is named as graduated_high_school" do
+        expect(subject[3].name).to eq :graduated_high_school
+      end
+
       it "contains `birthday` date field as fourth element" do
-        expect(subject[3]).to eq(Conceptual::DateAttribute.new(:birthday))
+        expect(subject[4]).to eq(Conceptual::DateAttribute.new(:birthday))
       end
 
       it "contains `created_at` datetime field as fifth element" do
-        expect(subject[4]).to eq(Conceptual::DateTimeAttribute.new(:created_at))
+        expect(subject[5]).to eq(Conceptual::DateTimeAttribute.new(:created_at))
       end
 
     end
