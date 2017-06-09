@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Mura-Mi/conceptual/badge.svg?branch=master)](https://coveralls.io/github/Mura-Mi/conceptual?branch=master)
 [![Code Climate](https://codeclimate.com/github/Mura-Mi/conceptual/badges/gpa.svg)](https://codeclimate.com/github/Mura-Mi/conceptual)
 [![Issue Count](https://codeclimate.com/github/Mura-Mi/conceptual/badges/issue_count.svg)](https://codeclimate.com/github/Mura-Mi/conceptual)
-[![Issue Count](https://codeclimate.com/github/Mura-Mi/conceptual/badges/issue_count.svg)](https://codeclimate.com/github/Mura-Mi/conceptual)
+[![Dependency Status](https://gemnasium.com/badges/github.com/Mura-Mi/conceptual.svg)](https://gemnasium.com/github.com/Mura-Mi/conceptual)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/conceptual`. To experiment with that code, run `bin/console` for an interactive prompt.
 
