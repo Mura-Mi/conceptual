@@ -10,5 +10,14 @@ require "conceptual"
 # require "pry"
 # Pry.start
 
+require 'singleton'
+class Player < Conceptual::EntityBuilder
+  include Singleton
+  int(:age)
+  string(:name)
+  date(:birthday)
+  datetime(:created_at)
+end
+
 require "irb"
 IRB.start(__FILE__)
