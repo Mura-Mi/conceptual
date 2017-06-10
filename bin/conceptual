@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'conceptual'
+puts Conceptual::VERSION
