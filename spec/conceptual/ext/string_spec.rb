@@ -13,4 +13,10 @@ RSpec.describe 'Conceptual::String' do
     end
   end
 
+  describe('to_upper') do
+    it 'converts snake_case to PascalCase' do
+      expect('i_am_a_hero'.to_pascal).to eq 'IAmAHero'
+    end
+  end
+
 end
