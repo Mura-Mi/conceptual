@@ -25,7 +25,7 @@ module Conceptual
     def self.datatype(attr)
       if attr.is_a? Conceptual::IntAttribute
         'INT(11)'
-      elsif attr.is_a?(Conceptual::StringAttribute)
+      elsif attr.is_a? Conceptual::StringAttribute
         'VARCHAR(255)'
       elsif attr.is_a? Conceptual::DateAttribute
         'DATE'

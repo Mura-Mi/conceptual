@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'conceptual'
-puts Conceptual::VERSION
 
-here = File.expand_path(File.dirname __FILE__)
+Dir[File.join(Dir.pwd, 'concepts', 'models', '**', '*.rb')].each { |d|
+  File.open(d) do |file|
+    require_relative file
+    puts Object.const_get(File.basename(file).gsub('.rb', '').to_pascal)
+  end
+}
+
+
